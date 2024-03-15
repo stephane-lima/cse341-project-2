@@ -5,7 +5,7 @@
     "description": "Vehicles API",
     "version": "1.0.0"
   },
-  "host": "cse341-project-2-oOmg.onrender.com",
+  "host": "cse341-project-2-g6df.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

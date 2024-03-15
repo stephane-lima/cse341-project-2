@@ -4,7 +4,7 @@ const ObjectId = require("mongodb").ObjectId;
 const getAllVehicles = async (req, res) => {
     //#swagger.tags=["Vehicles"]
     //#swaggger.summary = Retrieve all vehicles
-    const result = await mongodb.getDatabase.db().collection("vehicles").find();
+    const result = await mongodb.getDatabase().db().collection("vehicles").find();
     result.toArray((err, vehicles) => {
         if (err) {
             res.status(400).json({ message: err });

@@ -4,6 +4,8 @@ const indexRoute = require("./routes/index");
 const bodyParser = require("body-parser");
 const app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -18,7 +20,9 @@ app.use((req, res, next) => {
 
 app.use("/", indexRoute);
 
-const port = process.env.PORT || 3000;
+process.on("uncaughtException", (err, origin) => {
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+});
 
 mongodb.initDb((err) => {
     if (err) {

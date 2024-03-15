@@ -5,9 +5,10 @@
     "description": "Vehicles API",
     "version": "1.0.0"
   },
-  "host": "cse341-project-2.oOmg.onrender.com",
+  "host": "cse341-project-2-oOmg.onrender.com",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {

@@ -5,13 +5,17 @@ const getAllVehicles = async (req, res) => {
     //#swagger.tags=["Vehicles"]
     //#swaggger.summary = Retrieve all vehicles
     const result = await mongodb.getDatabase().db().collection("vehicles").find();
-    result.toArray((err, vehicles) => {
-        if (err) {
-            res.status(400).json({ message: err });
-        }
+    // result.toArray((err, vehicles) => {
+    //     if (err) {
+    //         res.status(400).json({ message: err });
+    //     }
+    //     res.setHeader("Content-Type", "application/json");
+    //     res.status(200).json(vehicles);
+    // });
+    result.toArray().then((vehicles) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(vehicles);
-    });
+    })
 };
 
 const getSingleVehicle = async (req, res) => {
@@ -22,13 +26,17 @@ const getSingleVehicle = async (req, res) => {
     }
     const vehicleId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection("vehicles").find({ _id: vehicleId });
-    result.toArray((err, vehicles) => {
-        if (err) {
-            res.status(400).json({ message: err });
-        }
+    // result.toArray((err, vehicles) => {
+    //     if (err) {
+    //         res.status(400).json({ message: err });
+    //     }
+    //     res.setHeader("Content-Type", "application/json");
+    //     res.status(200).json(vehicles);
+    // });
+    result.toArray().then((vehicles) => {
         res.setHeader("Content-Type", "application/json");
-        res.status(200).json(vehicles);
-    });
+        res.status(200).json(vehicles[0]);
+    })
 };
 
 const createVehicle = async (req, res) => {
@@ -41,7 +49,7 @@ const createVehicle = async (req, res) => {
         price: req.body.price,
         year: req.body.year,
         miles: req.body.miles,
-        color: req.body.color,
+        color: req.body.color
     }
     const response = await mongodb.getDatabase().db().collection("vehicles").insertOne(vehicle);
     if (response.acknowledged) {
@@ -65,7 +73,7 @@ const updateVehicle = async (req, res) => {
         price: req.body.price,
         year: req.body.year,
         miles: req.body.miles,
-        color: req.body.color,
+        color: req.body.color
     };
     const response = await mongodb.getDatabase().db().collection("vehicles").replaceOne({ _id: vehicleId }, vehicle);
     if (response.modifiedCount > 0) {

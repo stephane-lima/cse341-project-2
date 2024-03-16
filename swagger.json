@@ -13,6 +13,10 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "Homepage"
+        ],
+        "summary": "Returns Welcome to cse341 project 2",
         "description": "",
         "responses": {
           "200": {
@@ -44,12 +48,13 @@
         "tags": [
           "Users"
         ],
-        "summary": "Create a new user",
+        "summary": "Creates a new user",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "User object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -73,6 +78,9 @@
           "204": {
             "description": "No Content"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -94,6 +102,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to return",
             "type": "string"
           }
         ],
@@ -117,11 +126,13 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to update",
             "type": "string"
           },
           {
             "name": "body",
             "in": "body",
+            "description": "User object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -148,6 +159,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -164,6 +178,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to delete",
             "type": "string"
           }
         ],
@@ -185,6 +200,7 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Retrieves all vehicles",
         "description": "",
         "produces": [
           "application/json"
@@ -202,11 +218,13 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Creates a new vehicle",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "description": "Vehicle object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -239,6 +257,9 @@
           "204": {
             "description": "No Content"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -250,6 +271,7 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Retrieves a vehicle by ID",
         "description": "",
         "produces": [
           "application/json"
@@ -259,6 +281,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to return",
             "type": "string"
           }
         ],
@@ -275,17 +298,20 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Updates an existing vehicle",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to update",
             "type": "string"
           },
           {
             "name": "body",
             "in": "body",
+            "description": "Vehicle object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -321,6 +347,9 @@
           "400": {
             "description": "Bad Request"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -330,12 +359,14 @@
         "tags": [
           "Vehicles"
         ],
+        "summary": "Deletes an existing vehicle",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to delete",
             "type": "string"
           }
         ],

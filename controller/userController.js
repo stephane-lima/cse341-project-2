@@ -45,7 +45,7 @@ const getSingleUser = async (req, res) => {
 
 const createUser = async (req, res) => {
     //#swagger.tags=["Users"]
-    //#swagger.summary = Create a new user
+    //#swagger.summary = Creates a new user
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,

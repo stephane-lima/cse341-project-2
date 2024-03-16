@@ -6,6 +6,8 @@ const vehicleRoute = require("./vehicles");
 router.use("/", require("./swagger"));
 
 router.get("/", (req, res) => {
+    //#swagger.tags=["Homepage"]
+    //#swagger.summary = Returns Welcome to cse341 project 2
     res.send("Welcome to cse341 project 2");
 });
 

@@ -5,7 +5,7 @@ const validateUser = (req, res, next) => {
         firstName: "required|string",
         lastName: "required|string",
         email: "required|email",
-        password: "required|string"
+        password: "required|string|min:8"
     };
     validator(req.body, validationRules, {}, (err, status) => {
         if (!status) {
@@ -25,7 +25,7 @@ const validateVehicle = (req, res, next) => {
         make: "required|string",
         model: "required|string",
         type: "required|string",
-        price: "required|numeric",
+        price: "required|numeric|min:0",
         year: "required|numeric|between:1885,2024",
         miles: "required|integer|min:0",
         color: "required|string",

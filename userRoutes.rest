@@ -63,4 +63,4 @@ Content-Type: application/json
 }
 
 ### Delete user
-DELETE https://cse341-project-2-g6df.onrender.com/users/65f4846dffd0d91a604324f6
+DELETE https://cse341-project-2-g6df.onrender.com/users/65f59ede4998604eba1c6696

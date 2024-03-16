@@ -27,7 +27,7 @@ Content-Type: application/json
 {
     "make": "Ford",
     "model": "Model T",
-    "type": "classic",
+    "type": "Classic",
     "price": "30000",
     "year": "1921",
     "miles": "26357",
@@ -44,32 +44,31 @@ DELETE http://localhost:3000/vehicles/65f459ecd720e65b4c4a63aa
 GET https://cse341-project-2-g6df.onrender.com/vehicles
 
 ### Get vehicle by id
-GET https://cse341-project-2-g6df.onrender.com/vehicles/65f459ecd720e65b4c4a63aa
+GET https://cse341-project-2-g6df.onrender.com/vehicles/65f4ba990a0d350d5b584648
 
 ### Create new vehicle
 POST https://cse341-project-2-g6df.onrender.com/vehicles HTTP/1.1
 Content-Type: application/json
 
 {
-    {
     "make": "GM",
     "model": "Hummer",
     "type": "SUV",
     "price": "30000",
-    "year": "1921",
+    "year": "2022",
     "miles": "56564",
     "color": "Yellow"
 }
-}
+
 
 ### Update vehicle
-PUT https://cse341-project-2-g6df.onrender.com/vehicles/65f459ecd720e65b4c4a63aa HTTP/1.1
+PUT https://cse341-project-2-g6df.onrender.com/vehicles/65f48ae1c67285d1ee75b26f HTTP/1.1
 Content-Type: application/json
 
 {
     "make": "Ford",
     "model": "Model T",
-    "type": "classic",
+    "type": "Classic",
     "price": "30000",
     "year": "1921",
     "miles": "26357",
@@ -78,4 +77,4 @@ Content-Type: application/json
 
 
 ### Delete vehicle
-DELETE https://cse341-project-2-g6df.onrender.com/vehicles/65f459ecd720e65b4c4a63aa
+DELETE https://cse341-project-2-g6df.onrender.com/vehicles/65f5a2594998604eba1c6697

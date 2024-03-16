@@ -8,7 +8,9 @@ const getAllUsers = async (req, res) => {
     result.toArray().then((users) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users);
-    })
+    }).catch((err) => {
+        res.status(400).json({ message: err });
+    });
     // result.toArray((err, users) => {
     //     if (err) {
     //         res.status(400).json({ message: err });
@@ -29,7 +31,9 @@ const getSingleUser = async (req, res) => {
     result.toArray().then((users) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(users[0]);
-    })
+    }).catch((err) => {
+        res.status(400).json({ message: err });
+    });
     // result.toArray((err, users) => {
     //     if (err) {
     //         res.status(400).json({ message: err });

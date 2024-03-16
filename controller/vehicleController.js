@@ -15,7 +15,9 @@ const getAllVehicles = async (req, res) => {
     result.toArray().then((vehicles) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(vehicles);
-    })
+    }).catch((err) => {
+        res.status(400).json({ message: err });
+    });
 };
 
 const getSingleVehicle = async (req, res) => {
@@ -36,7 +38,9 @@ const getSingleVehicle = async (req, res) => {
     result.toArray().then((vehicles) => {
         res.setHeader("Content-Type", "application/json");
         res.status(200).json(vehicles[0]);
-    })
+    }).catch((err) => {
+        res.status(400).json({ message: err });
+    });
 };
 
 const createVehicle = async (req, res) => {

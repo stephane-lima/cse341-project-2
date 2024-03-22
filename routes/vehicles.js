@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const vehicleController = require("../controller/vehicleController");
 const validation = require("../middleware/validate");
+const { isAuthenticated } = require("../middleware/authenticate");
 
 // Retrieve All Users
 router.get("/", vehicleController.getAllVehicles);
@@ -10,12 +11,12 @@ router.get("/", vehicleController.getAllVehicles);
 router.get("/:id", vehicleController.getSingleVehicle);
 
 // Create New Vehicle
-router.post("/", validation.validateVehicle, vehicleController.createVehicle);
+router.post("/", isAuthenticated, validation.validateVehicle, vehicleController.createVehicle);
 
 // Update Vehicle
-router.put("/:id", validation.validateVehicle, vehicleController.updateVehicle);
+router.put("/:id", isAuthenticated, validation.validateVehicle, vehicleController.updateVehicle);
 
 // Delete Vehicle
-router.delete("/:id", vehicleController.deleteVehicle);
+router.delete("/:id", isAuthenticated, vehicleController.deleteVehicle);
 
 module.exports = router;

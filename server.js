@@ -1,10 +1,11 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config();
 const mongodb = require("./data/database");
 const indexRoute = require("./routes/index");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const session = require("expression-session");
+const session = require("express-session");
 const GithubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
 
@@ -25,13 +26,13 @@ app.use(session({
 app.use(passport.initialize());
 
 // Allow passport to use "express-session"
-app.use(passport.session())
+app.use(passport.session());
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
         "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
+        "Origin, X-Requested-With, Content-Type, Accept, Z-Key, Authorization"
     );
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
@@ -59,7 +60,10 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-app.get("/", (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged out")});
+app.get("/", (req, res) => { 
+    res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged out")
+    console.log(req.session.user);
+});
 
 app.get("/github/callback", passport.authenticate("github", {
     failureRedirect: "/api-docs", session: false}),

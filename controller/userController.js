@@ -1,5 +1,6 @@
 const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
+const bcrypt  = require("bcryptjs");
 
 const getAllUsers = async (req, res) => {
     //#swagger.tags=["Users"]
@@ -46,11 +47,12 @@ const getSingleUser = async (req, res) => {
 const createUser = async (req, res) => {
     //#swagger.tags=["Users"]
     //#swagger.summary = Creates a new user
+    let hashedpassword = await bcrypt.hashSync(req.body.password, 10)
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: hashedpassword
     };
     const response = await mongodb.getDatabase().db().collection("users").insertOne(user);
     if (response.acknowledged) {
@@ -67,11 +69,14 @@ const updateUser = async (req, res) => {
         res.status(400).json("Must use a valid user id to update a user");
     }
     const userId = new ObjectId(req.params.id);
+    
+    let hashedpassword = await bcrypt.hashSync(req.body.password, 10)
+    
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: hashedpassword
     }
     const response = await mongodb.getDatabase().db().collection("users").replaceOne({ _id: userId }, user);
     if (response.modifiedCount > 0) {

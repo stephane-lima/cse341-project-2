@@ -5,10 +5,10 @@ const doc = {
         title: "Vehicles API",
         description: "Vehicles API"
     },
-    // host: "cse341-project-2-g6df.onrender.com",
-    // schemes: ["https"]
-    host: "localhost:3000",
-    schemes: ["http"]
+    host: "cse341-project-2-g6df.onrender.com",
+    schemes: ["https"]
+    // host: "localhost:3000",
+    // schemes: ["http"]
 };
 
 const outputFile = "./swagger.json";

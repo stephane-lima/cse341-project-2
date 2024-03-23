@@ -5,26 +5,12 @@
     "description": "Vehicles API",
     "version": "1.0.0"
   },
-  "host": "cse341-project-2-g6df.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Homepage"
-        ],
-        "summary": "Returns Welcome to cse341 project 2",
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/login": {
       "get": {
         "description": "",
@@ -74,9 +60,13 @@
           {
             "name": "body",
             "in": "body",
+            "description": "User object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
+                "password": {
+                  "example": "any"
+                },
                 "firstName": {
                   "example": "any"
                 },
@@ -84,9 +74,6 @@
                   "example": "any"
                 },
                 "email": {
-                  "example": "any"
-                },
-                "password": {
                   "example": "any"
                 }
               }
@@ -124,6 +111,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to return",
             "type": "string"
           }
         ],
@@ -147,14 +135,19 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to update",
             "type": "string"
           },
           {
             "name": "body",
             "in": "body",
+            "description": "User object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
+                "password": {
+                  "example": "any"
+                },
                 "firstName": {
                   "example": "any"
                 },
@@ -162,9 +155,6 @@
                   "example": "any"
                 },
                 "email": {
-                  "example": "any"
-                },
-                "password": {
                   "example": "any"
                 }
               }
@@ -200,6 +190,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the user to delete",
             "type": "string"
           }
         ],
@@ -248,6 +239,7 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Vehicle object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -307,6 +299,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to return",
             "type": "string"
           }
         ],
@@ -330,11 +323,13 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to update",
             "type": "string"
           },
           {
             "name": "body",
             "in": "body",
+            "description": "Vehicle object that needs to be added to the database",
             "schema": {
               "type": "object",
               "properties": {
@@ -392,6 +387,7 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "description": "The ID of the vehicle to delete",
             "type": "string"
           }
         ],
